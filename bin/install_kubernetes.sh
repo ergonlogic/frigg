@@ -1,6 +1,10 @@
 #!/bin/bash
 
+script_dir="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
+$script_dir/utils/bootstrap.sh "$( pwd )"
+
 export KUBERNETES_PROVIDER=vagrant
+echo "Set provider to $KUBERNETES_PROVIDER."
 
 if [[ $(which wget) ]]; then
   wget -q -O - https://get.k8s.io | bash
