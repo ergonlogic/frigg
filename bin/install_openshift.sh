@@ -48,23 +48,23 @@ if [[ $? != 0 ]]; then
 fi
 
 echo "Starting Openshift daemon."
-vagrant ssh -c 'sudo -b `which openshift` start --public-master=localhost &> openshift.log' &> /dev/null
+vagrant ssh -c 'sudo -b `which openshift` start --public-master=localhost &> openshift.log' 2> /dev/null
 
 if [[ $? != 0 ]]; then
   echo "Openshift daemon failed to start. Printing the log at /home/vagrant/openshift.log:"
   vagrant ssh -c'cat openshift.log'
 else
   echo "Deploying private docker registry."
-  vagrant ssh -c 'sudo chmod +r openshift.local.config/master/openshift-registry.kubeconfig' &> /dev/null
-  vagrant ssh -c 'sudo chmod +r openshift.local.config/master/admin.kubeconfig' &> /dev/null
-  vagrant ssh -c 'oadm registry --create --credentials=openshift.local.config/master/openshift-registry.kubeconfig --config=openshift.local.config/master/admin.kubeconfig' &> /dev/null
+  vagrant ssh -c 'sudo chmod +r openshift.local.config/master/openshift-registry.kubeconfig' 2> /dev/null
+  vagrant ssh -c 'sudo chmod +r openshift.local.config/master/admin.kubeconfig' 2> /dev/null
+  vagrant ssh -c 'oadm registry --create --credentials=openshift.local.config/master/openshift-registry.kubeconfig --config=openshift.local.config/master/admin.kubeconfig' 2> /dev/null
 
   echo "Loading image stream."
-  vagrant ssh -c 'oc create -f /data/src/github.com/openshift/origin/examples/image-streams/image-streams-centos7.json -n openshift --config=openshift.local.config/master/admin.kubeconfig' &> /dev/null
+  vagrant ssh -c 'oc create -f /data/src/github.com/openshift/origin/examples/image-streams/image-streams-centos7.json -n openshift --config=openshift.local.config/master/admin.kubeconfig' 2> /dev/null
 
   echo "Loading templates."
-  vagrant ssh -c 'oc create -f /data/src/github.com/openshift/origin/examples/sample-app/application-template-stibuild.json -n openshift --config=openshift.local.config/master/admin.kubeconfig' &> /dev/null
-  vagrant ssh -c 'oc create -f /data/src/github.com/openshift/origin/examples/db-templates --config=openshift.local.config/master/admin.kubeconfig' &> /dev/null
+  vagrant ssh -c 'oc create -f /data/src/github.com/openshift/origin/examples/sample-app/application-template-stibuild.json -n openshift --config=openshift.local.config/master/admin.kubeconfig' 2> /dev/null
+  vagrant ssh -c 'oc create -f /data/src/github.com/openshift/origin/examples/db-templates --config=openshift.local.config/master/admin.kubeconfig' 2> /dev/null
 
   echo "You can access your Openshift console at: https://localhost:8443"
 fi
