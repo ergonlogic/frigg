@@ -44,7 +44,7 @@ vagrant ssh -c 'which openshift' &> /dev/null
 
 if [[ $? != 0 ]]; then
   echo "FRIGG: Building Openshift."
- # vagrant ssh -c 'cd /dev/data/src/github.com/openshift/origin && make clean build'
+  vagrant ssh -c 'cd /data/src/github.com/openshift/origin && make clean build'
 fi
 
 echo "Starting Openshift daemon."
