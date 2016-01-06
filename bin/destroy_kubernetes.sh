@@ -9,3 +9,5 @@ for machine in $machines; do
   vagrant destroy -f "$machine"
 done
 
+cd -
+rm -rf "$build_path/kubernetes"

@@ -1,4 +1,10 @@
 ---
-
 build:
   path: '_build'
+openshift:
+  git:
+    url: "git://github.com/openshift/origin"
+    ref: ""
+  memory: 3072
+  docker_in_docker: false
+  skip_build: false

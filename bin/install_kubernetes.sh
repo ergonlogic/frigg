@@ -1,7 +1,7 @@
 #!/bin/bash
 
 script_dir="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
-$script_dir/utils/bootstrap.sh "$( pwd )"
+source $script_dir/utils/bootstrap.sh
 
 export KUBERNETES_PROVIDER=vagrant
 echo "Set provider to $KUBERNETES_PROVIDER."
