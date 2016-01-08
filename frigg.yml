@@ -1,10 +1,14 @@
 ---
 build:
-  path: '_build'
+  path: "_build"
+vagrant:
+  home: "/home/vagrant"
 openshift:
   git:
     url: "git://github.com/openshift/origin"
     ref: ""
+  path: "/data/src/github.com/openshift/origin"
   memory: 3072
   docker_in_docker: false
   skip_build: false
+  kubeconfig: "openshift.local.config/master/admin.kubeconfig"

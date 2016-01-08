@@ -1,19 +1,21 @@
 #!/bin/bash
 
-script_dir="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
+bootstrap_script_dir="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
+source "$bootstrap_script_dir/log.sh"
 frigg_dir="$( dirname $script_dir )"
-functions=("$frigg_dir/functions/*.sh")
-for file in $functions; do
-  echo "Sourcing $file"
+
+frigg_functions=("$frigg_dir/functions/*.sh")
+for file in $frigg_functions; do
+  log_debug "Sourcing $file"
   source "$file"
 done
 
 version_check
 
-echo "Loading config variables."
+log_debug "Loading config variables."
 eval $(parse_yaml frigg.yml)
 
 if ! [ -d "$build_path" ]; then
-  echo "Creating build path."
-  mkdir $build_path
+  log_debug "Creating build path $build_path."
+  mkdir -p $build_path
 fi
