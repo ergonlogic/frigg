@@ -7,7 +7,7 @@ To get started:
 
     $ git clone --recursive https://github.com/ergonlogic/frigg.git
     $ cd frigg
-    $ ./bin/install_openshift.sh
+    $ LOG_LEVEL=debug ./bin/install_openshift.sh
 
 This will clone this repo, including the documentation as a submodule, then
 clone the Openshift Origin repo, and launch an all-in-one Vagrant-based
