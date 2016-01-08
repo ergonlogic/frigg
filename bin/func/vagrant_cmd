@@ -1,5 +1,7 @@
 #!/bin/bash
 
+# Run a command in a VM, while silencing noise.
+
 vagrant_cmd() {
   vagrant ssh -c"$@" 2>/dev/null
 }

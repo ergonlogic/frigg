@@ -1,7 +1,7 @@
 #!/bin/bash
 
 script_dir="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
-. $script_dir/utils/bootstrap.sh
+source $script_dir/../../util/bootstrap
 
 cd "$build_path/kubernetes"
 machines=$( vagrant status --machine-readable | awk -F "\"*,\"*" '{print $2}' | uniq )

@@ -1,11 +1,11 @@
 #!/bin/bash
 
 script_dir="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
-source $script_dir/utils/bootstrap.sh
+source $script_dir/../../util/bootstrap
 
 # Reset script_dir, which is apparently overridden during bootstrap
 script_dir="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
-$script_dir/destroy_openshift.sh
+$script_dir/destroy
 
 cd "$build_path"
 if [ -d openshift ]; then

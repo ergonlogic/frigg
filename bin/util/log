@@ -1,3 +1,4 @@
+#!/bin/bash
 script_dir="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
 
 log_info() {
@@ -6,32 +7,32 @@ log_info() {
 
 log_debug() {
   if [[ $LOG_LEVEL == 'debug' ]]; then
-    $script_dir/color.sh faint
+    $script_dir/color faint
     log_info $@
-    $script_dir/color.sh off
+    $script_dir/color off
   fi
 }
 
 log_success() {
-  $script_dir/color.sh green
+  $script_dir/color green
   log_info $@
-  $script_dir/color.sh off
+  $script_dir/color off
 }
 
 log_notice() {
-  $script_dir/color.sh cyan
+  $script_dir/color cyan
   log_info $@
-  $script_dir/color.sh off
+  $script_dir/color off
 }
 
 log_warning() {
-  $script_dir/color.sh yellow
+  $script_dir/color yellow
   log_info $@
-  $script_dir/color.sh off
+  $script_dir/color off
 }
 
 log_error() {
-  $script_dir/color.sh red
+  $script_dir/color red
   log_info $@
-  $script_dir/color.sh off
+  $script_dir/color off
 }
