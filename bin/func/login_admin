@@ -1,0 +1,9 @@
+#!/bin/bash
+
+login_admin() {
+
+  log_info "Logging into Openshift server as 'system:admin' user."
+  oc_cmd "oc login -u system:admin -n default"
+  oc_cmd "oc project $project_name"
+
+}

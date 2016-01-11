@@ -4,5 +4,5 @@
 # invocation.
 
 oc_cmd() {
-  vagrant_cmd "KUBECONFIG=$vagrant_home/$openshift_kubeconfig $@"
+  vagrant_cmd "export KUBECONFIG=$vagrant_home/$openshift_kubeconfig && $@"
 }

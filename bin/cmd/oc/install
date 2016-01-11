@@ -12,9 +12,8 @@ cd openshift
 vagrant_up
 build_openshift
 start_openshift
+fix_permissions
 deploy_docker_registry
 load_image_streams
 load_templates
 expose_default_project
-deploy_router
-

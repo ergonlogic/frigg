@@ -1,0 +1,8 @@
+#!/bin/bash
+
+fix_permissions() {
+
+  log_debug "Ensuring default Kubernetes config file is readable."
+  vagrant_cmd "sudo chmod 777 $vagrant_home/$openshift_kubeconfig"
+
+}

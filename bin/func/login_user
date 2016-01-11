@@ -1,0 +1,9 @@
+#!/bin/bash
+
+login_user() {
+
+  log_info "Logging into Openshift server as 'vagrant' user."
+  oc_cmd "oc login https://localhost:8443 --username=vagrant --password=vagrant --insecure-skip-tls-verify=true"
+  oc_cmd "oc project $project_name"
+
+}

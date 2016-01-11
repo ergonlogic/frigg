@@ -15,9 +15,6 @@ start_openshift() {
     log_debug "Waiting for default Kubernetes config file to be created."
     vagrant_cmd "sudo sh -c 'while [ ! -f $vagrant_home/$openshift_kubeconfig ]; do sleep 1; done'"
 
-    log_debug "Ensuring default Kubernetes config file is readable."
-    vagrant_cmd "sudo chmod a+r $vagrant_home/$openshift_kubeconfig"
-
     log_notice "You can access your Openshift console at:"
     log_notice "    URL: https://localhost:8443"
     log_notice "    User: vagrant"

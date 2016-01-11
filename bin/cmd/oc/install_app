@@ -1,0 +1,26 @@
+#!/bin/bash
+
+script_dir="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
+source $script_dir/../../util/bootstrap
+
+cd "$build_path/openshift"
+
+fix_permissions
+login_user
+
+log_info "Creating new project '$project_name'."
+oc_cmd "oc new-project $project_name --display-name='$project_label' --description='$project_description'"
+
+log_info "Granting 'vagrant' user access to new project '$project_name'"
+oc_cmd "oc policy add-role-to-user admin vagrant -n $project_name"
+
+log_info "Adding '$project_app_name' app."
+oc_cmd "oc new-app $project_app_source"
+
+deploy_router
+
+log_info "Exposing app via hostname '$project_app_hostname'."
+oc_cmd "oc expose service/$project_app_name --hostname=$project_app_hostname"
+
+log_notice "Your app is building. Once that completes, it will be accessible at:"
+log_notice "URL: $project_app_hostname"
