@@ -23,4 +23,4 @@ log_info "Exposing app via hostname '$project_app_hostname'."
 oc_cmd "oc expose service/$project_app_name --hostname=$project_app_hostname"
 
 log_notice "Your app is building. Once that completes, it will be accessible at:"
-log_notice "URL: $project_app_hostname"
+log_notice "URL: $project_app_hostname:1080"

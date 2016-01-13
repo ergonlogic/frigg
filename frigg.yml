@@ -17,6 +17,7 @@ project:
   label: "Frigg"
   description: "AegirNG FTW!"
   app:
-    name: "ruby-hello-world"
-    source: "centos/ruby-22-centos7~https://github.com/openshift/ruby-hello-world.git"
-    hostname: "localhost"
+    name: "drupal"
+    source: "php~https://github.com/ergonlogic/drupal-openshift.git#openshift mysql --group=php+mysql -e MYSQL_USER=drupal -e MYSQL_PASSWORD=drupalPW -e MYSQL_DATABASE=drupal"
+    #hostname: "localhost"
+    hostname: "www2.example.com"
